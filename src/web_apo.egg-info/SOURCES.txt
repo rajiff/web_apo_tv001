@@ -1,9 +1,0 @@
-README.md
-pyproject.toml
-src/app/main.py
-src/app/api/hello_world.py
-src/web_apo.egg-info/PKG-INFO
-src/web_apo.egg-info/SOURCES.txt
-src/web_apo.egg-info/dependency_links.txt
-src/web_apo.egg-info/requires.txt
-src/web_apo.egg-info/top_level.txt

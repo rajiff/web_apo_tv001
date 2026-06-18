@@ -18,6 +18,7 @@ dist/
 
 # Distribution / Packages
  *.egg-info/
+ **/*.egg-info/
 !__pycache__
 !compile bytecode
 .pytest_cache/
