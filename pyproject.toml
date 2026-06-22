@@ -1,23 +1,28 @@
 [project]
-name = "web-apo"
+name = "web-app"
 version = "0.1.0"
 description = "A standard FastAPI project"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 dependencies = [
-    "fastapi[standard]",
-]
-
-[tool.uv]
-dev-dependencies = [
-    "pytest",
-    "mypy",
-    "ruff",
+    "fastapi[standard]>=0.138,<=0.150.0",
+    "greenlet>=3.5.2",
+    "python-dotenv>=1.2.2",
+    "sqlalchemy>=2.0.51,<=2.1",
 ]
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling >= 1.30,<2.0"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build]
 packages = ["src/app"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1,<=9.2",
+    "mypy>=2.1.0",
+    "ruff>=0.15.18",
+    "asyncpg>=0.31.0",
+    "pytest-asyncio>=1.4.0",
+]
