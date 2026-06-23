@@ -5,7 +5,14 @@
       "Bash(uv sync *)",
       "Bash(uv run *)",
       "Bash(PYTHONPATH=. uv run *)",
-      "Bash(uv add *)"
+      "Bash(uv add *)",
+      "Bash(curl http://localhost:8000/)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"uv run fastapi dev\")",
+      "Bash(ruff check *)",
+      "Bash(ruff format *)",
+      "Bash(python3 *)",
+      "Bash(PYTHONPATH=/Users/basavarajkn/py_devbox/web_apo_tv001/src uv run pytest tests/test_customer_model.py -v --tb=short)"
     ]
   }
 }

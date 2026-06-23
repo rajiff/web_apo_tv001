@@ -1,29 +1,61 @@
-# Claude System Prompt: Staff Engineer Mode (Python)
+# Web Apo - FastAPI Web Application
 
-## 1. Environment & Package Management
-* **Environment Execution**: NEVER run raw commands like `python` or `pytest`. ALWAYS prefix with `uv run python` or `uv run pytest`.
-* **Dependency Management**: Use `uv add <pkg>`. Do NOT edit `pyproject.toml` or `requirements.txt` manually.
-* **Lockfile Integrity**: Ensure lockfiles are automatically updated after adding dependencies.
+A standard FastAPI project for providing core APIs and transactional APIs for web app functionality.
 
-## 2. Python Architecture & Coding Standards
-* **Type Hints**: Type annotations are mandatory for all function signatures, arguments, and return values.
-* **Static Analysis**: Code must pass `mypy --strict`. Do not use `Any` types unless absolutely unavoidable.
-* **Formatting & Linting**: Strictly adhere to Black/Ruff standards (88-character line limit). Use `ruff check --fix`.
-* **Anti-Pattern Prevention**: 
-  * NEVER use mutable default arguments (e.g., `def task(items=[])`).
-  * NEVER use wildcard imports (`from module import *`).
-  * ALWAYS use context managers (`with` statements) for file/resource operations.
-* **Clean Design**: Return early to minimize code nesting. Prefer `dataclasses` or Pydantic models for simple data containers.
+## Tech Stack
+- **Framework**: FastAPI (Python web framework for scalability, reliability)
+- **Database**: PostgreSQL with SQLAlchemy async ORM
+- **Validation**: Pydantic models
+- **Migrations**: Alembic
+- **Test Framework**: pytest with asyncio support
 
-## 3. Testing Strategy
-* **Framework**: Use `pytest` exclusively.
-* **Mocking**: Mock all external API endpoints, databases, and network requests.
-* **Pattern**: Follow the Arrange-Act-Assert structure for test readability.
+## Project Structure
+```
+src/app/
+├── api/               # API Route definitions (Controllers)
+├── core/              # Configuration, security, and global constants
+├── db/                # Database connection, engine setup, session management
+├── models/            # SQLAlchemy database models
+├── schemas/           # Pydantic request/response schemas
+├── services/          # Business logic & CRUD operations
+└── main.py            # Application entry point
+```
 
-## 4. Automation Commands
-* **Build/Environment**: `uv sync`
-* **Run Tests**: `uv run pytest tests/ -x --tb=short`
-* **Linting**: `uv run ruff check .`
-* **Formatting**: `uv run ruff format .`
-* **Type Check**: `uv run mypy src/`
+## Development Commands
 
+### Environment Setup
+```bash
+uv sync
+```
+
+### Run Application
+```bash
+uv run uvicorn app.main:app --reload
+# or for development
+uv run fastapi dev src/app/main.py
+```
+
+### Testing
+```bash
+PYTHONPATH=. uv run pytest tests/ -x --tb=short
+```
+
+### Code Quality
+```bash
+uv run ruff check .
+uv run ruff format .
+uv run mypy src/
+```
+
+## Key Configuration
+- **Database URL**: `DATABASE_URL` environment variable (PostgreSQL async)
+- **Pool Size**: `DB_POOL_SIZE` (default: 10)
+- **SQL Echo**: `SQL_ECHO` (default: false)
+
+## Engineering Practices
+- API-first thinking with OpenAPI documentation
+- Observability-first (metrics, logging, traces for OpenTelemetry integration)
+- Cloud-native infrastructure ready
+- Async/await patterns for async database operations
+- Type hints on all function signatures
+- Context managers for resource handling
