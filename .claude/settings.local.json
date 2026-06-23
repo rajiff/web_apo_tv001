@@ -12,7 +12,10 @@
       "Bash(ruff check *)",
       "Bash(ruff format *)",
       "Bash(python3 *)",
-      "Bash(PYTHONPATH=/Users/basavarajkn/py_devbox/web_apo_tv001/src uv run pytest tests/test_customer_model.py -v --tb=short)"
+      "Bash(PYTHONPATH=/Users/basavarajkn/py_devbox/web_apo_tv001/src uv run pytest tests/test_customer_model.py -v --tb=short)",
+      "Bash(perl -pi -e 's/\\\\t/    /g' /Users/basavarajkn/py_devbox/web_apo_tv001/src/app/models/customer.py)",
+      "Bash(sed -i '17s/^    /        /' /Users/basavarajkn/py_devbox/web_apo_tv001/src/app/models/customer.py)",
+      "Bash(sed -i '22s/^    /        /' /Users/basavarajkn/py_devbox/web_apo_tv001/src/app/models/customer.py)"
     ]
   }
 }
